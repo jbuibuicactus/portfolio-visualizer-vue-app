@@ -1,0 +1,34 @@
+version: '3.7'
+
+services:
+  client:
+    build: .
+    volumes:
+      - "./vue-portfolio-visualizer-client:/app"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - api
+
+  api:
+    build: .
+    volumes:
+      - "./vue-portfolio-visualizer-backend:/app"
+    ports:
+      - "7070:7070"
+    depends_on: 
+      - db
+  
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: vue-portfolio-visualizer-postgres
+    volumes:
+      - "pgdata:/var/lib/postgresql/data"
+    ports:
+      - "5432:5432"
+  
+volumes:
+  pgdata:

@@ -1,0 +1,34 @@
+{
+  "name": "portfolio-visualizer-vue-app",
+  "version": "1.0.0",
+  "description": "Portfolio visualizing tool",
+  "main": "server.js",
+  "dependencies": {
+    "@vue/cli": "^4.5.13",
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.6.5",
+    "vue": "^2.6.14",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.6.2",
+    "vuex-persistedstate": "^4.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-router": "^4.5.13"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node server.js",
+    "dev": "cd vue-portfolio-visualizer-client && npm run serve"
+  },
+  "keywords": [
+    "nodejs",
+    "express"
+  ],
+  "author": "jbuibuicactus",
+  "license": "ISC"
+}
