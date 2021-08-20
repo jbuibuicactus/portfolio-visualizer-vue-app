@@ -31,7 +31,7 @@ const actions = {
             if (accountpassword != form.password) {
               this.$router.push("/login");
             } else {
-              commit('setUser', form.username)
+              commit('setUser', response.data[0])
             }
           })
           .catch(err => {

@@ -2,18 +2,22 @@ version: '3.7'
 
 services:
   client:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile-Client
     volumes:
-      - "./vue-portfolio-visualizer-client:/app"
+      - "./vue-portfolio-visualizer-client:/app/client"
     ports:
       - "8080:8080"
     depends_on:
       - api
 
   api:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile-Api
     volumes:
-      - "./vue-portfolio-visualizer-backend:/app"
+      - "./vue-portfolio-visualizer-backend:/app/api"
     ports:
       - "7070:7070"
     depends_on: 
