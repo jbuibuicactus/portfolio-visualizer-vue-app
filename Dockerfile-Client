@@ -9,3 +9,4 @@ ENV NODE_PATH=/packageinstallclient/node_modules
 
 WORKDIR /app/client
 COPY vue-portfolio-visualizer-client /app/client/
+ENV PATH /packageinstallclient/node_modules/.bin:$PATH
