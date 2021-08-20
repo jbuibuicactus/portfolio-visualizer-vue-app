@@ -2,18 +2,26 @@ version: '3.7'
 
 services:
   client:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile-Client
+    command: npm run serve
     volumes:
-      - "./vue-portfolio-visualizer-client:/app"
+      - "/app/client/node_modules/"
+      - "./vue-portfolio-visualizer-client:/app/client"
     ports:
       - "8080:8080"
     depends_on:
       - api
 
   api:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile-Api
+    command: npm run serve
     volumes:
-      - "./vue-portfolio-visualizer-backend:/app"
+      - "/app/api/node_modules/"
+      - "./vue-portfolio-visualizer-backend:/app/api/"
     ports:
       - "7070:7070"
     depends_on: 
