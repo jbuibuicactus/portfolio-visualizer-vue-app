@@ -20,6 +20,7 @@ services:
       dockerfile: Dockerfile-Api
     command: npm run serve
     volumes:
+      - "/app/api/node_modules/"
       - "./vue-portfolio-visualizer-backend:/app/api/"
     ports:
       - "7070:7070"
