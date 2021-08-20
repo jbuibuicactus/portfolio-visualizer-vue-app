@@ -5,6 +5,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile-Client
+    command: npm run serve
     volumes:
       - "./vue-portfolio-visualizer-client:/app/client"
     ports:
@@ -16,8 +17,9 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile-Api
+    command: npm run serve
     volumes:
-      - "./vue-portfolio-visualizer-backend:/app/api"
+      - "./vue-portfolio-visualizer-backend:/app/api/"
     ports:
       - "7070:7070"
     depends_on: 

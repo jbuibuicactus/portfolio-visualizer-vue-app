@@ -1,9 +1,9 @@
 
 FROM node:latest
 
+
 WORKDIR /app/client
 COPY vue-portfolio-visualizer-client/package.json .
 
 CMD ls -ltr 
 CMD npm install
-CMD npm run serve

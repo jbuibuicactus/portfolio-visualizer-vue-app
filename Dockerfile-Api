@@ -1,9 +1,13 @@
 
 FROM node:latest
 
-WORKDIR /app/api
-COPY vue-portfolio-visualizer-backend/package.json .
+RUN ["mkdir", "/packageinstall"]
+ADD ["./vue-portfolio-visualizer-backend/package.json", "/packageinstall"]
+WORKDIR /packageinstall
+RUN npm install --verbose
+ENV NODE_PATH=/packageinstall/node_modules
 
-CMD ls -ltr 
-CMD npm install
-CMD npm run serve
+
+WORKDIR /app/api
+COPY vue-portfolio-visualizer-backend /app/api/
+
