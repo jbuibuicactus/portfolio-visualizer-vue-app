@@ -1,6 +1,8 @@
 //store/modules/auth.js
 
 import axios from 'axios';
+import UserDataService from '../../services/UserDataService';
+
 const state = {
     user: null,
     posts: null,
@@ -12,16 +14,30 @@ const getters = {
 };
 const actions = {
     async Register({dispatch}, form) {
-        await axios.post('register', form)
+        //await axios.post('register', form)
+        await UserDataService.create(form)
         let UserForm = new FormData()
         UserForm.append('username', form.username)
         UserForm.append('password', form.password)
         await dispatch('LogIn', UserForm)
       },
 
-      async LogIn({commit}, User) {
-        await axios.post('login', User)
-        await commit('setUser', User.get('username'))
+      async LogIn({commit}, form) {
+        //await axios.post('login', User)
+        UserDataService.findByUsername(form.username)
+          .then(response => {
+            console.log(response)
+            let accountpassword = response.data[0].password
+            if (accountpassword != form.password) {
+              this.$router.push("/login");
+            } else {
+              commit('setUser', form.username)
+            }
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        //await commit('setUser', User.get('username'))
       },
       async CreatePost({dispatch}, post) {
         await axios.post('post', post)
@@ -33,7 +49,7 @@ const actions = {
       },
       async LogOut({commit}){
         let user = null
-        commit('logout', user)
+        commit('LogOut', user)
       }
             
 };

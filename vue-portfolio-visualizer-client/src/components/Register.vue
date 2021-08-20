@@ -7,8 +7,16 @@
               <input type="text" name="username" v-model="form.username">
             </div>
             <div>
-              <label for="full_name">Full Name:</label>
-              <input type="text" name="full_name" v-model="form.full_name">
+              <label for="firstname">First Name:</label>
+              <input type="text" name="firstname" v-model="form.firstname">
+            </div>
+            <div>
+              <label for="lastname">Last Name:</label>
+              <input type="text" name="lastname" v-model="form.lastname">
+            </div>
+            <div>
+              <label for="email">Email:</label>
+              <input type="text" name="email" v-model="form.email">
             </div>
             <div>
               <label for="password">Password:</label>
@@ -23,6 +31,7 @@
 
 <script>
 import { mapActions } from "vuex";
+//import UserDataService from "../services/UserDataService"
 export default {
   name: "Register",
   components: {},
@@ -30,7 +39,10 @@ export default {
     return {
       form: {
         username: "",
-        full_name: "",
+        firstname: "",
+        lastname: "",
+        email: "",
+        adminstatus: false,
         password: "",
       },
       showError: false
