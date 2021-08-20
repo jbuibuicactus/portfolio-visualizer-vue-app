@@ -1,10 +1,9 @@
-
 FROM node:latest
 
 RUN ["mkdir", "/packageinstall"]
 ADD ["./vue-portfolio-visualizer-backend/package.json", "/packageinstall"]
 WORKDIR /packageinstall
-RUN npm install --verbose
+RUN npm install
 ENV NODE_PATH=/packageinstall/node_modules
 
 

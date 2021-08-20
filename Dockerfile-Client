@@ -1,9 +1,11 @@
-
 FROM node:latest
 
+RUN ["mkdir", "/packageinstallclient"]
+ADD ["./vue-portfolio-visualizer-client/package.json", "/packageinstallclient"]
+WORKDIR /packageinstallclient
+RUN npm install
+ENV NODE_PATH=/packageinstallclient/node_modules
 
-WORKDIR /app/client
-COPY vue-portfolio-visualizer-client/package.json .
 
-CMD ls -ltr 
-CMD npm install
+WORKDIR /app/api
+COPY vue-portfolio-visualizer-client /app/api/
