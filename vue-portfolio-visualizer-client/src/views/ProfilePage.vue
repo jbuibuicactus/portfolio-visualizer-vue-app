@@ -61,7 +61,7 @@
                       <h6 class="mb-0">Full Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Kenneth Valdez
+                      {{ User.firstname}}
                     </div>
                   </div>
                   <hr>
@@ -189,7 +189,8 @@ export default {
             form: {
                 title: '',
                 write_up: '',
-            }
+            },
+            editMode: false
         };
     },
   created: function () {
